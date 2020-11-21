@@ -1,0 +1,73 @@
+
+  <form [formGroup]="profileForm">
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label i18n>Name</label>
+        <input type="text" placeholder="Enter Name" formControlName="name" class="form-control">
+        <div *ngIf="Name.errors && Name.touched">
+          <div class="text-danger" *ngIf="Name.errors.required">Name cannot be empty</div>
+          <div class="text-danger" *ngIf="Name.errors.minlength">Minimum 2 characters required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Email</label>
+        <input type="email" placeholder="Enter Email" formControlName="email" class="form-control">
+        <div *ngIf="Email.errors && Email.touched">
+          <div class="text-danger" *ngIf="Email.errors.required">Email cannot be empty</div>
+          <div class="text-danger" *ngIf="Email.errors.email">Invalid email format</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Sex</label>
+        <select name="sex" formControlName="sex" class="form-control" id="">
+          <option value="">Select Sex</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+        <div *ngIf="Sex.errors && Sex.touched">
+          <div class="text-danger" *ngIf="Sex.errors.required">Sex cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Birth Date</label>
+        <input type="date" placeholder="Enter Name" formControlName="birthdate" class="form-control">
+        <div *ngIf="BirthDate.errors && BirthDate.touched">
+          <div class="text-danger" *ngIf="BirthDate.errors.required">Birth date cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Phone Number</label>
+        <input type="number" placeholder="Enter Phone Number" formControlName="phonenumber" class="form-control">
+        <div *ngIf="Phone.errors && Phone.touched">
+          <div class="text-danger" *ngIf="Phone.errors.required">Phone number cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Address</label>
+        <input type="text" placeholder="Enter Address" formControlName="address" class="form-control">
+        <div *ngIf="Address.errors && Address.touched">
+          <div class="text-danger" *ngIf="Address.errors.required">Address cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>City</label>
+        <input type="text" placeholder="Enter City" formControlName="city" class="form-control">
+        <div *ngIf="City.errors && City.touched">
+          <div class="text-danger" *ngIf="City.errors.required">City cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Country</label>
+        <input type="text" placeholder="Enter Country" formControlName="country" class="form-control">
+        <div *ngIf="Country.errors && Country.touched">
+          <div class="text-danger" *ngIf="Country.errors.required">Country cannot be empty</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-4">
+        <button class="btn btn-danger btn-block" type="reset" (click)="onCancel()">Cancel</button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-4">
+        <button class="btn btn-primary btn-block" type="submit" (click)="onSubmit(profileForm.value)" [disabled]="!profileForm.valid">Submit</button>
+      </div>
+    </div>
+  </form>

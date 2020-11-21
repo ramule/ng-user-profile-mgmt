@@ -1,0 +1,79 @@
+
+  <form #editProfileForm="ngForm" (ngSubmit)="onUpdate(editProfileForm)">
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Name</label>
+        <input type="text" placeholder="Enter Name" [(ngModel)]="profile.name"
+        name="name" #name="ngModel" class="form-control" required minlength="3">
+        <div *ngIf="name.errors" class="alert alert-danger">
+          <div *ngIf="name.hasError('required')">Name is required</div>
+          <div *ngIf="name.hasError('minlength')">Please enter valid length</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Email</label>
+        <input type="email" placeholder="Enter Email" [(ngModel)]="profile.email" name="email" #email="ngModel"
+         class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+         <div *ngIf="email.errors" class="alert alert-danger">
+          <div *ngIf="email.hasError('required')">Email is required</div>
+          <div *ngIf="email.hasError('pattern')">Please enter valid email address</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Sex</label>
+        <select name="sex" class="form-control" [(ngModel)]="profile.sex" name="sex" #sex="ngModel" id="" required>
+          <option value="">Select Sex</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+        <div *ngIf="sex.errors" class="alert alert-danger">
+          <div *ngIf="sex.hasError('required')">Sex is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Birth Date</label>
+        <input type="date" placeholder="Enter Birth Date" name="birthdate"
+        [ngModel]="profile.birthdate | date: 'yyyy-MM-dd'" (ngModelChange)="profile.birthdate = $event"
+         #bDate="ngModel" class="form-control" required>
+        <div *ngIf="bDate.errors" class="alert alert-danger">
+          <div *ngIf="bDate.hasError('required')">Birthdate is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Phone Number</label>
+        <input type="number" placeholder="Enter Phone Number" [(ngModel)]="profile.phonenumber" #pNumber="ngModel"
+        name="phonenumber" class="form-control" required>
+        <div *ngIf="pNumber.errors" class="alert alert-danger">
+          <div *ngIf="pNumber.hasError('required')">Phone Number is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Address</label>
+        <input type="text" placeholder="Enter Address" [(ngModel)]="profile.address" #address="ngModel"
+         name="address" class="form-control" required>
+         <div *ngIf="address.errors" class="alert alert-danger">
+          <div *ngIf="address.hasError('required')">Address is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>City</label>
+        <input type="text" placeholder="Enter City" [(ngModel)]="profile.city" name="city" #city="ngModel" class="form-control" required>
+        <div *ngIf="city.errors" class="alert alert-danger">
+          <div *ngIf="city.hasError('required')">City is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-2">
+        <label>Country</label>
+        <input type="text" placeholder="Enter Country" [(ngModel)]="profile.country" name="country" #country="ngModel" class="form-control" required>
+        <div *ngIf="country.errors" class="alert alert-danger">
+          <div *ngIf="country.hasError('required')">Country is required</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-4">
+        <button class="btn btn-danger btn-block" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-6 mt-4">
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="editProfileForm.invalid">Update</button>
+      </div>
+    </div>
+  </form>

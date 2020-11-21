@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-12">
+      <h2 i18n="This is the page header of home page">Profiles</h2>
+      <div class="row">
+          <div class="col-md-6" *ngFor="let profile of profiles">
+            <app-card [profile]="profile"></app-card>
+          </div>
+      </div>
+  </div>
+</div>
